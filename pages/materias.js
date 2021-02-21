@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../Components/Layouts/Layout';
 import styled from '@emotion/styled'
 
-export default function Home() {
+const Materias = () => {
   return (
     <div>
       <Layout>
@@ -10,3 +10,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Materias;

@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*Globales*/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+:root {
+    --azul: rgba(43,53,89,255);
+    --negroligero: rgba(18,18,18,255);
+}
