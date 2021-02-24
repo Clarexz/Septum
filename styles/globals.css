@@ -8,6 +8,7 @@ html {
     font-size: 62.5%;
     box-sizing: border-box;
     background-color: rgba(244, 245, 247, 255);
+    font-family: 'Source Sans Pro', sans-serif;
 }
 *, *:before, *:after {
     box-sizing: inherit;
