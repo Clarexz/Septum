@@ -17,3 +17,27 @@ html {
     --azul: rgba(43,53,89,255);
     --negroligero: rgba(18,18,18,255);
 }
+
+.barra-oculta {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 18rem;
+    text-align: center;
+    align-items: center;
+    display: none;
+}
+.barra-activa {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 18rem;
+    text-align: center;
+    align-items: center;
+}
