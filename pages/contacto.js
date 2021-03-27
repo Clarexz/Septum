@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '../Components/Layouts/Layout';
 
-const Materias = () => {
+const Contacto = () => {
   return (
     <div>
       <Layout />
-      <h1>Materias</h1>
+      <h1>Contacto</h1>
     </div>
   )
 }
 
-export default Materias;
+export default Contacto;
