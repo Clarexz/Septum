@@ -15,7 +15,9 @@ html {
   }
 :root {
     --azul: rgba(43,53,89,255);
-    --negroligero: rgba(18,18,18,255);
+    --negroligero: rgb(120, 120, 120);
+    --grisInput: rgb(225, 225, 225);
+    --rojoError: rgb(196, 53, 58);
 }
 
 .barra-oculta {

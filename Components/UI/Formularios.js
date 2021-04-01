@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Espacio = styled.div`
     text-align: center;
-    padding-top: 6rem;
+    padding-top: 4rem;
 
     :nth-of-type(1) {
         padding-top: 3rem;
@@ -16,6 +16,7 @@ export const Espacio = styled.div`
         font-size: 1.875rem;
         padding: 1.75rem;
         border-radius: 1.5rem;
+        background-color: var(--grisInput);
     } 
     
     select {
@@ -23,12 +24,26 @@ export const Espacio = styled.div`
         font-size: 1.875rem;
         padding: 1.75rem;
         border-radius: 1.5rem;
+        background-color: var(--grisInput);
     }
 `;
 
 export const BotonChico = styled.input`
-    background-color: var(--azul);
+    background-color: var(--azul)!important;
     color: white;
     font-weight: 600;
     width: 14rem!important;
+
+    :hover {
+        cursor: pointer;
+    }
+`;
+
+export const Error = styled.p`
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+    color: var(--rojoError);
+    font-weight: 600;
 `;
