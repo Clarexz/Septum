@@ -9,6 +9,10 @@ export default function validarCrearCuenta(valores) {
     if(!valores.apellido) {
         errores.apellido = "El apellido es obligatorio y no se aceptan caracteres especiales"
     };
+ 
+    if(valores.sexo === '') {
+        errores.sexo = "Elige una opción"
+    }
 
     if(!valores.email) {
         errores.email = "El email es obligatorio y no se aceptan caracteres especiales"
@@ -29,10 +33,6 @@ export default function validarCrearCuenta(valores) {
     if(valores.passwordconfirm !== valores.password) {
         errores.passwordconfirm = "La contraseña no coincide"
     };
-
-    if(valores.sexo === '') {
-        errores.sexo = "Elige una opción"
-    }
 
     return errores;
 }

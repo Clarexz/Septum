@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../Components/Layouts/Layout';
-import { Espacio, BotonChico, Error } from '../Components/UI/Formularios';
+import Router from 'next/router';
+import { Espacio, BotonChico, Error, ErrorCuentaExistente } from '../Components/UI/Formularios';
+
+import firebase from '../Firebase';
 
 //validaciones
 import useValidacion from '../Hooks/useValidacion';
@@ -9,22 +12,30 @@ import validarCrearCuenta from '../Validacion/validarCrearCuenta';
 const STATE_INICIAL = {
   nombre: '',
   apellido: '',
+  sexo: '',
   email: '',
   emailconfirm: '',
   password: '',
   passwordconfirm: '',
-  sexo: ''
-
 };
 
 const Registrate = () => {
 
+  const [ error, guardarError ] = useState(false)
+
   const { valores, errores, handleSubmit, handleChange} = useValidacion( STATE_INICIAL, validarCrearCuenta, crearCuenta );
 
-  const { nombre, apellido, email, emailconfirm, password, passwordconfirm, sexo } = valores;
+  const { nombre, apellido, sexo, email, emailconfirm, password, passwordconfirm } = valores;
 
-  function crearCuenta() {
-    console.log("Creando cuenta");
+  async function crearCuenta() {
+    try {
+      await firebase.registrar(nombre, apellido, sexo, email, password);
+      Router.push('/verificacion');
+      firebase.verificar();
+    } catch (error) {
+      console.error('Hubo un error al crear el usuario', error.message);
+      guardarError(error.message);
+    }
   };
 
   return (
@@ -65,6 +76,19 @@ const Registrate = () => {
           />
         </Espacio>
         {errores.apellido && <Error>{errores.apellido}</Error>}
+
+        <Espacio>
+          <select
+            name="sexo"
+            value={sexo}
+            onChange={handleChange}  
+          >
+            <option value="" disabled>Sexo</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+          </select>
+        </Espacio>
+        {errores.sexo && <Error>{errores.sexo}</Error>}
 
         <Espacio>
           <label htmlFor="email" className="sr-only">Correo electrónico</label>
@@ -118,18 +142,7 @@ const Registrate = () => {
         </Espacio>
         {errores.passwordconfirm && <Error>{errores.passwordconfirm}</Error>}
 
-        <Espacio>
-          <select
-            name="sexo"
-            value={sexo}
-            onChange={handleChange}  
-          >
-            <option value="" disabled>Sexo</option>
-            <option value="hombre">Hombre</option>
-            <option value="mujer">Mujer</option>
-          </select>
-        </Espacio>
-        {errores.sexo && <Error>{errores.sexo}</Error>}
+        {error && <ErrorCuentaExistente>{error}</ErrorCuentaExistente>}
 
         <Espacio>
           <BotonChico

@@ -47,3 +47,15 @@ export const Error = styled.p`
     color: var(--rojoError);
     font-weight: 600;
 `;
+
+export const ErrorCuentaExistente = styled.p`
+    width: 80%;
+    font-size: 1.875rem;
+    padding: 1.75rem;
+    border-radius: 1.5rem;
+    background-color: var(--rojoError);
+    margin: 4rem auto;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+`;
