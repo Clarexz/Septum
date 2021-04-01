@@ -11,7 +11,7 @@ const StyledLink = styled.a`
     padding: 2rem 0;
     font-size: 2rem;
 
-    :nth-child(1) {
+    :nth-of-type(1) {
         padding-top: 4rem;
     }
 `;
