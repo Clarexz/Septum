@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
+import { FirebaseContext } from '../../Firebase'
 
 const ContenedorLinks = styled.div`
     background-color: rgba(43,53,89,255);
@@ -18,11 +19,17 @@ const StyledLink = styled.a`
 
 const Sidebar = ({ menu }) => {
 
+    const { usuario } = useContext(FirebaseContext);
+
     return ( 
         <>
             <ContenedorLinks className={!menu ? 'barra-oculta' : 'barra-activa'}>
                 <nav className="flex flex-col">
-                    <Link href="/" passHref><StyledLink>Iniciar Sesión</StyledLink></Link>
+                    {usuario 
+                        ? <Link href="/perfil" passHref><StyledLink>Mi Cuenta</StyledLink></Link>
+                        : <Link href="/" passHref><StyledLink>Iniciar Sesión</StyledLink></Link>    
+                    }
+                    
                     <Link href="/materias" passHref><StyledLink>Materias</StyledLink></Link>
                     <Link href="/cuestionarios" passHref><StyledLink>Cuestionarios</StyledLink></Link>
                     <Link href="/contacto" passHref><StyledLink>Contacto</StyledLink></Link>

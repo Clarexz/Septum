@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import Router from 'next/router';
 
 import firebaseConfig from './config';
 
@@ -20,6 +21,7 @@ class Firebase {
         })
     }
 
+    //Verificación de email por correo
     async verificar() {
         var user = this.auth.currentUser;
 
@@ -28,6 +30,17 @@ class Firebase {
         }).catch(function(error) {
         // An error happened.
         });
+    }
+
+    //Iniciar sesión
+    async login(email, password) {
+        return this.auth.signInWithEmailAndPassword(email, password);
+    }
+
+    //Cerrar sesión del usuario
+    async cerrarSesion() {
+        await this.auth.signOut();
+        Router.push('/');
     }
 }
 
