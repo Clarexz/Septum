@@ -29,7 +29,7 @@ const Topbar = () => {
             />
 
             <ContenedorAzul className="text-white flex h-32">
-                <Link href="/">
+                <Link href="/materias">
                     <h1 className="w-72 text-center text-7xl m-auto cursor-pointer">Septum</h1>
                 </Link>
             </ContenedorAzul>        

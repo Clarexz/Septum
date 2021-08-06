@@ -27,7 +27,8 @@ export default function Home() {
     try {
       const usuario = await firebase.login(email, password);
       if(usuario.user.emailVerified === true) {
-        Router.push('/perfil');
+        Router.push('/materias');
+        console.log(usuario);
       } else {
         guardarError(error.message)
       }
@@ -40,7 +41,7 @@ export default function Home() {
   return (
     <div>
       <Layout />
-    
+      
       <h1 className="text-5xl font-bold text-center">Iniciar Sesión</h1>
     
       <Link href="/registrate">
@@ -78,19 +79,19 @@ export default function Home() {
         {errores.password && <Error>{errores.password}</Error>}
 
         {error && <ErrorCuentaExistente>Cuenta no verificada o no existente</ErrorCuentaExistente>}
+        
+        <Link href="/password">
+          <p className="text-blue-700 underline ml-16 cursor-pointer w-72 text-lg sm:m-auto pt-4">¿Olvidaste tu contraseña?</p>
+        </Link>
 
         <Espacio>
           <BotonChico
             type="submit"
-            value="Iniciar Sesión"
+            value="Entrar"
           />
         </Espacio>
 
-        <p className="text-4xl text-center mt-10"> - o - </p>
-
-        <Espacio>
-
-        </Espacio>
+        
       </form>
     </div>
   )

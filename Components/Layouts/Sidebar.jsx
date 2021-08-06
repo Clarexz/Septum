@@ -25,14 +25,14 @@ const Sidebar = ({ menu }) => {
         <>
             <ContenedorLinks className={!menu ? 'barra-oculta' : 'barra-activa'}>
                 <nav className="flex flex-col">
-                    {usuario 
-                        ? <Link href="/perfil" passHref><StyledLink>Mi Cuenta</StyledLink></Link>
-                        : <Link href="/" passHref><StyledLink>Iniciar Sesión</StyledLink></Link>    
-                    }
                     
                     <Link href="/materias" passHref><StyledLink>Materias</StyledLink></Link>
                     <Link href="/cuestionarios" passHref><StyledLink>Cuestionarios</StyledLink></Link>
                     <Link href="/contacto" passHref><StyledLink>Contacto</StyledLink></Link>
+                    {usuario 
+                        ? <Link href="/configuracion" passHref><StyledLink>Configuración</StyledLink></Link>
+                        : <Link href="/" passHref><StyledLink>Iniciar Sesión</StyledLink></Link>    
+                    }
                 </nav>
                 
                 <div className="h-32 w-32 mt-10">

@@ -37,10 +37,28 @@ class Firebase {
         return this.auth.signInWithEmailAndPassword(email, password);
     }
 
+    //Iniciar sesión con Google
+        //Algún día lo lograré :(
+
+
     //Cerrar sesión del usuario
     async cerrarSesion() {
         await this.auth.signOut();
         Router.push('/');
+    }
+
+    //Restablecimiento de contraseña ERROR
+    async mandarPassword(email) {
+        return this.auth.sendPasswordResetEmail(email)
+        .then(() => {
+            // Password reset email sent!
+            // ..
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ..
+        });
     }
 }
 
