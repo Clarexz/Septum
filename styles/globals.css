@@ -7,17 +7,27 @@
 html {
     font-size: 62.5%;
     box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;  
+}
+body {
     background-color: rgba(244, 245, 247, 255);
-    font-family: 'Source Sans Pro', sans-serif;
 }
 *, *:before, *:after {
     box-sizing: inherit;
   }
 :root {
+    --fondo: rgba(244, 245, 247, 255);
     --azul: rgba(43,53,89,255);
+    --texto: black;
     --negroligero: rgb(120, 120, 120);
     --grisInput: rgb(225, 225, 225);
     --rojoError: rgb(196, 53, 58);
+    --doradoPremium: #f0be41;
+
+    --fondoDARK: black;
+    --azulDARK: rgb(17, 24, 39);
+    --textoDARK: white;
+    --grisInputDARK: rgb(31, 41, 55);
 }
 
 .barra-oculta {

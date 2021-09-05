@@ -3,9 +3,12 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 import { FirebaseContext } from '../../Firebase'
 
+import { DarkModeContext } from '../../Context/DarkModeContext';
+
 const ContenedorLinks = styled.div`
-    background-color: rgba(43,53,89,255);
+    background-color: ${props => props.bgColor};
     padding-top: 8rem;
+    transition: all 0.7s;
 `;
 
 const StyledLink = styled.a`
@@ -21,9 +24,14 @@ const Sidebar = ({ menu }) => {
 
     const { usuario } = useContext(FirebaseContext);
 
+    const { darkMode } = useContext(DarkModeContext);
+
     return ( 
         <>
-            <ContenedorLinks className={!menu ? 'barra-oculta' : 'barra-activa'}>
+            <ContenedorLinks 
+                className={!menu ? 'barra-oculta' : 'barra-activa'}
+                bgColor={darkMode ? 'var(--azulDARK)' : 'var(--azul)'}    
+            >
                 <nav className="flex flex-col">
                     
                     <Link href="/materias" passHref><StyledLink>Materias</StyledLink></Link>

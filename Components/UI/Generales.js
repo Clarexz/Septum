@@ -9,12 +9,14 @@ export const TextoSistema = styled.p`
 `;
 
 export const BloqueGris = styled.button`
-    background-color: var(--grisInput);
+    background-color: ${props => props.bgColor};
+    color: ${props => props.textColor};
     font-size: 1.8rem;
-    padding: 2rem 1.7rem;
+    padding: 2.1rem 1.8rem;
     border-radius: 1.5rem;
     font-weight: 600;
     width: 80%;
+    transition: all 0.7s;
 `;
 
 export const GridDobleColumna = styled.div`
@@ -26,7 +28,17 @@ export const GridDobleColumna = styled.div`
 export const BloqueRojo = styled.button`
     background-color: var(--rojoError);
     font-size: 1.8rem;
-    padding: 2rem 1.7rem;
+    padding: 2.1rem 1.8rem;
+    border-radius: 1.5rem;
+    font-weight: 600;
+    width: 80%;
+    color: white;
+`;
+
+export const DoradoPremium = styled.button`
+    background-color: var(--doradoPremium);
+    font-size: 1.8rem;
+    padding: 2.1rem 1.8rem;
     border-radius: 1.5rem;
     font-weight: 600;
     width: 80%;

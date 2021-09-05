@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import BotonMenu from './BotonMenu';
 import Sidebar from './Sidebar';
 
+import { DarkModeContext } from '../../Context/DarkModeContext';
+
 const ContenedorAzul = styled.div`
-    background-color: rgba(43,53,89,255);
+    background-color: ${props => props.bgColor};
+    color: white;
+    display: flex;
+    height: 8rem;
+    transition: all 0.7s;
 `;
 
 
@@ -16,6 +22,10 @@ const Topbar = () => {
     const abrirMenu = () => {
         setMenu(!menu);
     };
+
+    //Dark Mode
+    const { darkMode } = useContext(DarkModeContext);
+
 
     return ( 
         <>
@@ -28,7 +38,9 @@ const Topbar = () => {
                 handleClick={abrirMenu}
             />
 
-            <ContenedorAzul className="text-white flex h-32">
+            <ContenedorAzul
+                bgColor={darkMode ? "var(--azulDARK)" : "var(--azul)"}
+            >
                 <Link href="/materias">
                     <h1 className="w-72 text-center text-7xl m-auto cursor-pointer">Septum</h1>
                 </Link>
