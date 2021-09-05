@@ -9,17 +9,7 @@ const DarkModeProvider = (props) => {
     const cambiarModo = e => {
         e.preventDefault();
 
-        
-
-        if( darkMode === false ) {
-            window.localStorage.removeItem('themeLight');
-            window.localStorage.setItem('themeDark', 'dark')
-            setDarkMode(!darkMode); 
-        } else {
-            window.localStorage.removeItem('themeDark');
-            window.localStorage.setItem('themeLight', 'light');
-            setDarkMode(!darkMode); 
-        }
+        setDarkMode(!darkMode); 
     };
     
 
