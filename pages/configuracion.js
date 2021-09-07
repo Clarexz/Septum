@@ -13,8 +13,6 @@ const Configuracion = () => {
 
   const {darkMode, cambiarModo} = useContext(DarkModeContext);
 
-  
-
   return (
     <div className={darkMode ? 'transition duration-700 bg-black' : 'transition duration-700'}>
       <Layout/>
