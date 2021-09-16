@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 import Router from 'next/router';
 
 import firebaseConfig from './config';
@@ -10,10 +11,11 @@ class Firebase {
             app.initializeApp(firebaseConfig)
         }
         this.auth = app.auth();
+        this.db = app.firestore();
     }
 
     //Registrar un usuario
-    async registrar(nombre, apellido, sexo, email, password) {
+    async registrar(nombre, apellido, email, password) {
         const nuevoUsuario = await this.auth.createUserWithEmailAndPassword(email, password);
 
         return await nuevoUsuario.user.updateProfile({
@@ -59,6 +61,19 @@ class Firebase {
             var errorMessage = error.message;
             // ..
         });
+    }
+
+    //Eliminar cuenta
+    async cuentaEliminada() {
+        var user = this.auth.currentUser;
+
+        // User re-authenticated.
+        user.delete().then(() => {
+            // User deleted.
+        }).catch((error) => {
+            // An error ocurred
+            // ...
+        }); 
     }
 }
 

@@ -16,7 +16,8 @@ export const Espacio = styled.div`
         font-size: 1.875rem;
         padding: 1.75rem;
         border-radius: 1.5rem;
-        background-color: var(--grisInput);
+        background-color: ${props => props.bgColor};
+        color: ${props => props.textColor};
     } 
     
     select {
@@ -29,7 +30,7 @@ export const Espacio = styled.div`
 `;
 
 export const BotonChico = styled.input`
-    background-color: var(--azul)!important;
+    background-color: ${props => props.bgColor};
     color: white;
     font-weight: 600;
     width: 14rem!important;

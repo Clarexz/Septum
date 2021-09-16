@@ -18,6 +18,7 @@ body {
 :root {
     --fondo: rgba(244, 245, 247, 255);
     --azul: rgba(43,53,89,255);
+    --azulLinks: rgb(29, 78, 216);
     --texto: black;
     --negroligero: rgb(120, 120, 120);
     --grisInput: rgb(225, 225, 225);
@@ -26,6 +27,7 @@ body {
 
     --fondoDARK: black;
     --azulDARK: rgb(17, 24, 39);
+    --azulLinksDARK: rgb(12, 131, 254);
     --textoDARK: white;
     --grisInputDARK: rgb(31, 41, 55);
 }

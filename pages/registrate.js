@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Layout from '../Components/Layouts/Layout';
 import Router from 'next/router';
 import { Espacio, BotonChico, Error, ErrorCuentaExistente } from '../Components/UI/Formularios';
 
 import firebase from '../Firebase';
+
+import { DarkModeContext } from '../Context/DarkModeContext';
 
 //validaciones
 import useValidacion from '../Hooks/useValidacion';
@@ -12,7 +14,6 @@ import validarCrearCuenta from '../Validacion/validarCrearCuenta';
 const STATE_INICIAL = {
   nombre: '',
   apellido: '',
-  sexo: '',
   email: '',
   emailconfirm: '',
   password: '',
@@ -25,11 +26,11 @@ const Registrate = () => {
 
   const { valores, errores, handleSubmit, handleChange} = useValidacion( STATE_INICIAL, validarCrearCuenta, crearCuenta );
 
-  const { nombre, apellido, sexo, email, emailconfirm, password, passwordconfirm } = valores;
+  const { nombre, apellido, email, emailconfirm, password, passwordconfirm } = valores;
 
   async function crearCuenta() {
     try {
-      await firebase.registrar(nombre, apellido, sexo, email, password);
+      await firebase.registrar(nombre, apellido, email, password);
       Router.push('/verificacion');
       firebase.verificar();
     } catch (error) {
@@ -38,16 +39,21 @@ const Registrate = () => {
     }
   };
 
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div>
+    <div className={darkMode ? 'transition duration-700 bg-black' : 'transition duration-700'}>
       <Layout />
-      <h1 className="text-5xl font-bold text-center pt-12">Regístrate</h1>
+      <h1 className={darkMode ? "transition duration-700 text-white text-5xl font-bold text-center" : "transition duration-700 text-5xl font-bold text-center"}>Regístrate</h1>
 
       <form
         onSubmit={handleSubmit}
         noValidate
       >
-        <Espacio>
+        <Espacio
+          bgColor={darkMode ? 'var(--grisInputDARK)' : 'var(--grisInput)'}
+          textColor={darkMode ? 'white' : 'black'}
+        >
           <label htmlFor="nombre" className="sr-only">Nombre(s)</label>
           <input 
             type="text"
@@ -62,7 +68,10 @@ const Registrate = () => {
         </Espacio>
         {errores.nombre && <Error>{errores.nombre}</Error>}
 
-        <Espacio>
+        <Espacio
+          bgColor={darkMode ? 'var(--grisInputDARK)' : 'var(--grisInput)'}
+          textColor={darkMode ? 'white' : 'black'}
+        >
           <label htmlFor="apellido" className="sr-only">Apellido(s)</label>
           <input 
             type="text"
@@ -77,20 +86,10 @@ const Registrate = () => {
         </Espacio>
         {errores.apellido && <Error>{errores.apellido}</Error>}
 
-        <Espacio>
-          <select
-            name="sexo"
-            value={sexo}
-            onChange={handleChange}  
-          >
-            <option value="" disabled>Sexo</option>
-            <option value="hombre">Hombre</option>
-            <option value="mujer">Mujer</option>
-          </select>
-        </Espacio>
-        {errores.sexo && <Error>{errores.sexo}</Error>}
-
-        <Espacio>
+        <Espacio
+          bgColor={darkMode ? 'var(--grisInputDARK)' : 'var(--grisInput)'}
+          textColor={darkMode ? 'white' : 'black'}
+        >
           <label htmlFor="email" className="sr-only">Correo electrónico</label>
           <input 
             type="email"
@@ -103,7 +102,10 @@ const Registrate = () => {
         </Espacio>
         {errores.email && <Error>{errores.email}</Error>}
 
-        <Espacio>
+        <Espacio
+          bgColor={darkMode ? 'var(--grisInputDARK)' : 'var(--grisInput)'}
+          textColor={darkMode ? 'white' : 'black'}
+        >
           <label htmlFor="emailconfirm" className="sr-only">Confirma tu correo</label>
           <input 
             type="email"
@@ -116,7 +118,10 @@ const Registrate = () => {
         </Espacio>
         {errores.emailconfirm && <Error>{errores.emailconfirm}</Error>}
 
-        <Espacio>
+        <Espacio
+          bgColor={darkMode ? 'var(--grisInputDARK)' : 'var(--grisInput)'}
+          textColor={darkMode ? 'white' : 'black'}
+        >
           <label htmlFor="password" className="sr-only">Contraseña</label>
           <input 
             type="password"
@@ -129,7 +134,10 @@ const Registrate = () => {
         </Espacio>
         {errores.password && <Error>{errores.password}</Error>}
 
-        <Espacio>
+        <Espacio
+          bgColor={darkMode ? 'var(--grisInputDARK)' : 'var(--grisInput)'}
+          textColor={darkMode ? 'white' : 'black'}
+        >
           <label htmlFor="passwordconfirm" className="sr-only">Confirma tu contraseña</label>
           <input 
             type="password"
@@ -148,6 +156,8 @@ const Registrate = () => {
           <BotonChico
             type="submit"
             value="Crear Cuenta"
+            bgColor={darkMode ? "var(--azulDARK)!important" : "var(--azul)!important"}
+            className="mb-16"
           />
         </Espacio>
       </form>

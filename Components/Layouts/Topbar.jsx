@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import BotonMenu from './BotonMenu';
 import Sidebar from './Sidebar';
 
+import { FirebaseContext } from '../../Firebase';
 import { DarkModeContext } from '../../Context/DarkModeContext';
 
 const ContenedorAzul = styled.div`
@@ -23,6 +24,8 @@ const Topbar = () => {
         setMenu(!menu);
     };
 
+    const { usuario } = useContext(FirebaseContext);
+
     //Dark Mode
     const { darkMode } = useContext(DarkModeContext);
 
@@ -41,7 +44,7 @@ const Topbar = () => {
             <ContenedorAzul
                 bgColor={darkMode ? "var(--azulDARK)" : "var(--azul)"}
             >
-                <Link href="/materias">
+                <Link href={usuario ? "/materias" : "/"}>
                     <h1 className="w-72 text-center text-7xl m-auto cursor-pointer">Septum</h1>
                 </Link>
             </ContenedorAzul>        

@@ -1,18 +1,21 @@
 import React, { useContext } from 'react';
-import Layout from '../Components/Layouts/Layout';
 import { Espacio } from '../Components/UI/Formularios';
 import { BloqueGris, BloqueRojo, GridDobleColumna, DoradoPremium } from '../Components/UI/Generales'
+import Link from 'next/link';
 
+//Contexts
 import { FirebaseContext } from '../Firebase';
-
 import { DarkModeContext } from '../Context/DarkModeContext';
+
+//Componentes
+import Layout from '../Components/Layouts/Layout';
 
 const Configuracion = () => {
 
   const { firebase } = useContext(FirebaseContext);
 
   const {darkMode, cambiarModo} = useContext(DarkModeContext);
-
+  
   return (
     <div className={darkMode ? 'transition duration-700 bg-black' : 'transition duration-700'}>
       <Layout/>
@@ -66,11 +69,13 @@ const Configuracion = () => {
         </Espacio>
 
         <Espacio>
-          <BloqueRojo className="mb-8">
-            Eliminar Cuenta
-          </BloqueRojo>
+          <Link href="/eliminarCuenta">
+            <BloqueRojo 
+              className="mb-72">
+              Eliminar Cuenta
+            </BloqueRojo>
+          </Link>
         </Espacio>
-
       </GridDobleColumna>
     </div>
   )
