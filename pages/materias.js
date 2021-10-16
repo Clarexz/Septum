@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Layout from '../Components/Layouts/Layout';
-import BloquesMaterias from '../Components/UI/Materias/BloquesMaterias';
+import BloquesMaterias from '../Components/UI/BloquesMaterias';
 
 //Context
 import { DarkModeContext } from '../Context/DarkModeContext';
@@ -15,7 +15,7 @@ const Materias = () => {
 
   useEffect(() => {
     const obtenerMaterias = () => {
-      firebase.db.collection('materias').onSnapshot(manejarSnapshot);
+      firebase.db.collection('materias').orderBy("titulo", "asc").onSnapshot(manejarSnapshot);
     }
     obtenerMaterias();
   }, [])
@@ -41,7 +41,7 @@ const Materias = () => {
 
       {materiadb.map(materia => (
         <BloquesMaterias 
-          key={materiadb.id}
+          key={materia.id}
           materia={materia}
         />
       ))}
